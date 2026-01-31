@@ -1,6 +1,4 @@
-
 window.getScore = function() {
-  // امتیاز های پیش فرض کاربر 
   return parseInt(localStorage.getItem('comicScore') || '20');
 };
 
@@ -9,16 +7,17 @@ window.setScore = function(newScore) {
 };
 
 window.isChapterRead = function(comicId, chapterId) {
-  return localStorage.getItem(`read_\( {comicId}_ \){chapterId}`) === 'true';
+  return localStorage.getItem(`read_${comicId}_${chapterId}`) === 'true';
 };
 
 window.markChapterRead = function(comicId, chapterId) {
-  localStorage.setItem(`read_\( {comicId}_ \){chapterId}`, 'true');
+  localStorage.setItem(`read_${comicId}_${chapterId}`, 'true');
 };
 
 window.spendScoreIfNeeded = function(comicId, chapterId) {
+  // اگر قبلاً خوانده شده → رایگان
   if (window.isChapterRead(comicId, chapterId)) {
-    return true; // قبلاً خوانده شده → رایگان
+    return true;
   }
 
   let score = window.getScore();
@@ -26,8 +25,12 @@ window.spendScoreIfNeeded = function(comicId, chapterId) {
     return false; // امتیاز کافی نیست
   }
 
+  // کم کردن امتیاز
   score -= 10;
   window.setScore(score);
+
+  // علامت‌گذاری فصل به عنوان خوانده‌شده
   window.markChapterRead(comicId, chapterId);
+
   return true;
 };

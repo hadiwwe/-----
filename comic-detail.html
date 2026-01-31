@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>توضیحات کمیک</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div onclick="history.back()" style="cursor:pointer; font-size:1.5rem; color:#ffea00;">← بازگشت</div>
+  <div id="score-display" style="display:flex; align-items:center; gap:10px; background:rgba(255,215,0,0.2); padding:10px 18px; border-radius:999px;">
+    <img src="https://img.icons8.com/emoji/96/000000/coin-emoji.png" style="width:34px;height:34px;">
+    امتیاز: <span id="score-value">20</span>
+  </div>
+</header>
+
+<main style="padding:90px 15px 120px; position:relative;">
+
+  <!-- کاور با افکت کامل -->
+  <div id="comic-header" style="
+      position:relative;
+      margin-bottom:-40px;
+      z-index:1;
+      height:300px;
+      overflow:hidden;
+      border-radius:0 0 32px 32px;">
+      
+    <img id="comic-cover" src="" alt="" 
+         style="width:100%; height:100%; object-fit:cover; object-position:top;">
+         
+    <div style="position:absolute; inset:0;
+         background:linear-gradient(to bottom, transparent 40%, #0d001a 85%);">
+    </div>
+  </div>
+
+  <!-- باکس توضیحات جمع‌وجور -->
+  <div id="comic-detail" style="
+      position:relative;
+      z-index:2;
+      padding:40px 20px 10px;
+      background:linear-gradient(180deg, rgba(26,16,50,0.92) 0%, #0f001f 100%);
+      border-radius:32px;
+      box-shadow:0 -20px 60px rgba(0,0,0,0.7);">
+
+    <!-- عنوان حذف شد -->
+
+    <p id="comic-summary" style="
+        font-size:0.9rem;
+        color:#d4c8ff;
+        line-height:1.45;
+        text-align:justify;
+        margin-bottom:18px;">
+    </p>
+
+    <h2 style="
+        color:#ffd700;
+        font-size:1.3rem;
+        margin:10px 0 12px;
+        text-align:center;">
+      فصل‌ها
+    </h2>
+
+    <div id="chapters-grid" style="
+        display:grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap:14px;">
+    </div>
+
+  </div>
+</main>
+
+<div class="tab-bar">
+  <div class="tab" onclick="history.back()">بازگشت به اصلی</div>
+</div>
+
+<script src="adivery.global.js"></script>
+<script src="data.js"></script>
+<script src="storage.js"></script>
+<script src="ads.js"></script>
+
+<script>
+// بروزرسانی امتیاز
+window.updateScoreUI = () => {
+  const score = window.getScore ? window.getScore() : 20;
+  document.getElementById('score-value').textContent = score;
+};
+
+// init Adivery
+if (typeof Adivery !== 'undefined') {
+  Adivery.configure("83fc9705-8bb6-45ab-90cc-d3f145a774a1");
+}
+
+window.updateScoreUI();
+
+// لود کمیک
+window.addEventListener('load', () => {
+  const params = new URLSearchParams(location.search);
+  const id = Number(params.get('id'));
+
+  const comic = comics.find(c => c.id === id);
+  const detail = document.getElementById('comic-detail');
+
+  if (!comic) {
+    detail.innerHTML = `<h1 style="text-align:center;color:#ff4d4d;margin:120px 0;">کمیک یافت نشد</h1>`;
+    return;
+  }
+
+  // ست کردن کاور و متن‌ها
+  document.getElementById('comic-cover').src = comic.cover;
+  document.getElementById('comic-summary').textContent = comic.summary;
+
+  // رندر فصل‌ها
+  const grid = document.getElementById('chapters-grid');
+  grid.innerHTML = comic.chapters.map(ch => `
+    <div onclick="location.href='reader.html?comic=${comic.id}&chapter=${ch.id}'" class="chapter-item">
+      <img src="${ch.cover}" alt="${ch.title}" loading="lazy">
+      <div class="chapter-info">
+        <div class="chapter-title">${ch.title}</div>
+        <div class="chapter-pages">${ch.pageCount || '?'} صفحه</div>
+      </div>
+    </div>
+  `).join('');
+
+  window.updateScoreUI();
+});
+</script>
+
+<style>
+.chapter-item {
+  background: rgba(255,215,0,0.07);
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 1px solid rgba(255,215,0,0.18);
+}
+.chapter-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(255,215,0,0.25);
+}
+.chapter-item img {
+  width: 100%;
+  display: block;
+}
+.chapter-info {
+  padding: 8px;
+  text-align: center;
+}
+.chapter-title {
+  color: #ffea00;
+  font-weight: bold;
+  margin-bottom: 3px;
+  font-size: 0.9rem;
+}
+.chapter-pages {
+  color: #b0a0ff;
+  font-size: 0.8rem;
+}
+</style>
+
+</body>
+</html>
