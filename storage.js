@@ -1,36 +1,33 @@
-// ads.js
-// فرض: adivery.global.js لود شده است
 
-const APP_ID = "83fc9705-8bb6-45ab-90cc-d3f145a774a1";
-const REWARDED_PLACEMENT = "60a72aa7-d023-457b-9232-fb2f1782face";
+window.getScore = function() {
+  // امتیاز های پیش فرض کاربر 
+  return parseInt(localStorage.getItem('comicScore') || '20');
+};
 
-function initAdivery() {
-  if (typeof Adivery !== 'undefined') {
-    Adivery.configure(APP_ID);
+window.setScore = function(newScore) {
+  localStorage.setItem('comicScore', newScore);
+};
+
+window.isChapterRead = function(comicId, chapterId) {
+  return localStorage.getItem(`read_\( {comicId}_ \){chapterId}`) === 'true';
+};
+
+window.markChapterRead = function(comicId, chapterId) {
+  localStorage.setItem(`read_\( {comicId}_ \){chapterId}`, 'true');
+};
+
+window.spendScoreIfNeeded = function(comicId, chapterId) {
+  if (window.isChapterRead(comicId, chapterId)) {
+    return true; // قبلاً خوانده شده → رایگان
   }
-}
 
-async function watchAdForReward() {
-  if (typeof Adivery === 'undefined') {
-    alert("خطا: کتابخانه Adivery لود نشده است.");
-    return;
+  let score = window.getScore();
+  if (score < 10) {
+    return false; // امتیاز کافی نیست
   }
 
-  try {
-    const ad = await Adivery.requestRewardedAd(REWARDED_PLACEMENT);
-    const isRewarded = await ad.show();
-
-    if (isRewarded === true) {
-      let score = getScore();
-      score += 2;
-      setScore(score);
-      alert("تبریک! ۲ امتیاز اضافه شد.");
-      if (typeof updateScoreUI === 'function') updateScoreUI(); // اگر در صفحه اصلی هستی
-    } else {
-      alert("تبلیغ کامل دیده نشد.");
-    }
-  } catch (err) {
-    console.error(err);
-    alert("خطا در بارگذاری تبلیغ. بعداً امتحان کنید.");
-  }
-}
+  score -= 10;
+  window.setScore(score);
+  window.markChapterRead(comicId, chapterId);
+  return true;
+};
