@@ -113,7 +113,52 @@ const comics = [
 },
 
   // placeholder برای بقیه
-  { id: 4, title: "استفانی", chaptersCount: 4, cover: "https://via.placeholder.com/300x420?text=Stephanie", summary: "...", chapters: [] },
+  {
+  id: 4,
+  title: "استفانی",
+  cover: "https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/STEFFIE/S1/CH1.jpeg",
+  teaser: "https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/STEFFIE/S1/CH1.jpeg",
+  summary: "استفانی، دختر باهوش، جسور و مرموز با مهارت‌های فوق‌العاده تیراندازی و تاکتیک‌های هوشمندانه، در دنیای پرخطر و پر از راز فری فایر زندگی می‌کند. او با گذشته‌ای پیچیده و اراده‌ای قوی، همیشه در جستجوی حقیقت و محافظت از کسانی است که برایش مهم هستند. ماجراهای استفانی پر از هیجان، نبردهای نفس‌گیر و لحظات احساسی عمیق است.",
+  chaptersCount: 4,
+  chapters: [
+    {
+      id: 1,
+      title: "فصل اول",
+      cover: "https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/STEFFIE/S1/CH1.jpeg",
+      pageCount: 15,
+      pages: Array.from({length: 15}, (_, i) => 
+        `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/STEFFIE/S1/CH1_${String(i+1).padStart(3,'0')}.jpeg`
+      )
+    },
+    {
+      id: 2,
+      title: "فصل دوم",
+      cover: "https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/STEFFIE/S2/CH2.jpeg",
+      pageCount: 14,
+      pages: Array.from({length: 14}, (_, i) => 
+        `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/STEFFIE/S2/CH2_${String(i+1).padStart(3,'0')}.jpeg`
+      )
+    },
+    {
+      id: 3,
+      title: "فصل سوم",
+      cover: "https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/STEFFIE/S3/CH3.jpeg",
+      pageCount: 16,
+      pages: Array.from({length: 16}, (_, i) => 
+        `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/STEFFIE/S3/CH3_${String(i+1).padStart(3,'0')}.jpeg`
+      )
+    },
+    {
+      id: 4,
+      title: "فصل چهارم",
+      cover: "https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/STEFFIE/S4/CH4.jpeg",
+      pageCount: 14,
+      pages: Array.from({length: 14}, (_, i) => 
+        `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/STEFFIE/S4/CH4_${String(i+1).padStart(3,'0')}.jpeg`
+      )
+    }
+  ]
+},
   { id: 5, title: "موکو", chaptersCount: 7, cover: "https://via.placeholder.com/300x420?text=Moco", summary: "...", chapters: [] },
   { id: 6, title: "موکو و استفانی", chaptersCount: 4, cover: "https://via.placeholder.com/300x420?text=Moco+Stephanie", summary: "...", chapters: [] }
 ];
