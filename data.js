@@ -224,5 +224,104 @@ const comics = [
     }
   ]
 },
-  { id: 6, title: "موکو و استفانی", chaptersCount: 4, cover: "https://via.placeholder.com/300x420?text=Moco+Stephanie", summary: "...", chapters: [] }
+  {
+  id: 6,
+  title: "فراری‌ها",
+  cover: "https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S3/CH3.jpeg",
+  teaser: "https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S1/CH1.jpeg",
+  summary: "توجه قبل از خواندن این کمیک ابتدا کمیک های استیفی و موکو را بخوانید .دختران فراری — موکو و استیفی — یک پیام درخواست کمک مخفی دریافت می‌کنند. استیفی که در حال ردیابی سرنخ‌ها بود، ناگهان ناپدید می‌شود. موکو برای نجات دوستش چاره‌ای جز این ندارد که مخفیانه وارد آزمایشگاه عظیم هورایزن شود.",
+  chaptersCount: 10,
+  chapters: [
+    {
+      id: 1,
+      title: "فصل اول",
+      cover: "https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S1/CH1.jpeg",
+      pageCount: 12,
+      pages: Array.from({length: 12}, (_, i) => 
+        `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S1/CH1_${String(i+1).padStart(3,'0')}.jpeg`
+      )
+    },
+    {
+      id: 2,
+      title: "فصل دوم",
+      cover: `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S2/CH2.jpeg`,
+      pageCount: 13,
+      pages: Array.from({length: 13}, (_, i) => 
+        `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S2/CH2_${String(i+1).padStart(3,'0')}.jpeg`
+      )
+    },
+    {
+      id: 3,
+      title: "فصل سوم",
+      cover: `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S3/CH3.jpeg`,
+      pageCount: 14,
+      pages: Array.from({length: 14}, (_, i) => 
+        `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S3/CH3_${String(i+1).padStart(3,'0')}.jpeg`
+      )
+    },
+    {
+      id: 4,
+      title: "فصل چهارم",
+      cover: `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S4/CH4.jpeg`,
+      pageCount: 14,
+      pages: Array.from({length: 14}, (_, i) => 
+        `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S4/CH4_${String(i+1).padStart(3,'0')}.jpeg`
+      )
+    },
+    {
+      id: 5,
+      title: "فصل پنجم",
+      cover: `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S5/CH5.jpeg`,
+      pageCount: 14,
+      pages: Array.from({length: 14}, (_, i) => 
+        `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S5/CH5_${String(i+1).padStart(3,'0')}.jpeg`
+      )
+    },
+    {
+      id: 6,
+      title: "فصل ششم",
+      cover: `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S6/CH6.jpeg`,
+      pageCount: 15,
+      pages: Array.from({length: 15}, (_, i) => 
+        `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S6/CH6_${String(i+1).padStart(3,'0')}.jpeg`
+      )
+    },
+    {
+      id: 7,
+      title: "فصل هفتم",
+      cover: `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S7/CH7.jpeg`,
+      pageCount: 13,
+      pages: Array.from({length: 13}, (_, i) => 
+        `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S7/CH7_${String(i+1).padStart(3,'0')}.jpeg`
+      )
+    },
+    {
+      id: 8,
+      title: "فصل هشتم",
+      cover: `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S8/CH8.jpeg`,
+      pageCount: 16,
+      pages: Array.from({length: 16}, (_, i) => 
+        `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S8/CH8_${String(i+1).padStart(3,'0')}.jpeg`
+      )
+    },
+    {
+      id: 9,
+      title: "فصل نهم",
+      cover: `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S9/CH9.jpeg`,
+      pageCount: 16,
+      pages: Array.from({length: 16}, (_, i) => 
+        `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S9/CH9_${String(i+1).padStart(3,'0')}.jpeg`
+      )
+    },
+    {
+      id: 10,
+      title: "فصل دهم",
+      cover: `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S10/CH10.jpeg`,
+      pageCount: 23,
+      pages: Array.from({length: 23}, (_, i) => 
+        `https://app.puzzley.net/uploads/user/rWvb/%DA%A9%D9%85%DB%8C%DA%A9/DECODED/S10/CH10_${String(i+1).padStart(3,'0')}.jpeg`
+      )
+    }
+  ]
+}
 ];
